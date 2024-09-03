@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
                 gb.transform.position = transform.position;
                 Rigidbody rb = gb.GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 500);
+                rb.AddForce(transform.forward * 750);
 
                 //Vector3 shotAt = transform.forward * 3f;
                 //bulletFire.endPosition = ;

@@ -12,23 +12,30 @@ public class UIManager : MonoBehaviour
     public Slider healthSlider;
 
     private float timeElapsed = 0;
+    
+    private bool isGameOn = true;
 
     private void Start(){
         EventManager.playerHit += OnHealthChange;
         EventManager.enemyKilled += OnScoreChange;
-        
+        EventManager.gameOver += () => isGameOn = false;
+
         timerText.text = 0.ToString();
         scoreText.text = 0.ToString();
         healthSlider.value = 100;
+
+        isGameOn = true;
     }
 
     public void Update(){
 
-        // calculating time 
-        timeElapsed += Time.deltaTime;
+        if(isGameOn){
+            // calculating time 
+            timeElapsed += Time.deltaTime;
 
-        // displaying time 
-        timerText.text = $"{(int) timeElapsed} sec";
+            // displaying time 
+            timerText.text = $"{(int) timeElapsed} sec";
+        }
     }
 
     public void OnHealthChange(int health){
